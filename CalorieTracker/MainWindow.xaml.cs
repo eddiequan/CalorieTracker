@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -31,7 +32,7 @@ namespace CalorieTracker
 
         private void FindButtonMouseUp(object sender, RoutedEventArgs e)
         {
-            string apiKey = "";
+            string apiKey = ConfigurationManager.AppSettings["UsdaApiKey"];
             string query = GetFoodItemQuery();
             var request = new RestRequest($"search/?q={query}&max=4&api_key={apiKey}", Method.GET);
             request.AddHeader("Content-Type", "application/json");
@@ -42,8 +43,7 @@ namespace CalorieTracker
             List<FoodItem> queryResults = queryResponse.list.item;
             foreach (var result in queryResults)
             {
-                //                FoodItemResults.Items.Add(result.name);
-                FoodItemResults.Items.Add(AppDomain.CurrentDomain.BaseDirectory);
+                FoodItemResults.Items.Add(result.name);
             }
         }
 

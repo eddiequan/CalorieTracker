@@ -5,8 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CalorieTracker"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="Calorie Tracker" Height="350" Width="525">
     <Grid>
-        <Button Content="Hello World" MouseDoubleClick="FindButtonMouseUp"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="430" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition />
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Button Content="Find" Click="FindButtonMouseUp" Grid.Column="1" Margin="10, 10, 10, 10"/>
+        <TextBox Name="FoodItemQuery" Grid.Column="0" Grid.Row="0" Margin="10, 10, 10, 10"/>
+        <ListBox Name="FoodItemResults" Grid.Column="0" Grid.Row="1" Margin="10, 10, 10, 10" />
     </Grid>
 </Window>
